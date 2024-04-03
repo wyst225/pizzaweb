@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kosár</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Kosár</h2>
+    <form id="calcForm">
+      <div class="form-group">
+        <label for="product1">Termék 1 (pl. pizza) - 1900 Ft/db</label>
+        <input type="number" class="form-control" id="product1" name="product1" min="0">
+      </div>
+      <div class="form-group">
+        <label for="topping">Feltét - 200 Ft/db</label>
+        <input type="number" class="form-control" id="topping" name="topping" min="0">
+      </div>
+      <div class="form-group">
+        <label for="drink05">Üdítő 0,5 liter - 500 Ft/db</label>
+        <input type="number" class="form-control" id="drink05" name="drink05" min="0">
+      </div>
+      <div class="form-group">
+        <label for="drink1">Üdítő 1 liter - 1000 Ft/db</label>
+        <input type="number" class="form-control" id="drink1" name="drink1" min="0">
+      </div>
+      <div class="form-group">
+        <label for="comment">Megjegyzés:</label>
+        <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="calculateTotal()">Kiszámol</button>
+    </form>
+    <div id="totalResult" class="mt-3"></div>
+  </div>
+
+  <script>
+    function calculateTotal() {
+      var product1 = document.getElementById("product1").value;
+      var topping = document.getElementById("topping").value;
+      var drink05 = document.getElementById("drink05").value;
+      var drink1 = document.getElementById("drink1").value;
+
+      var product1Cost = 1900;
+      var toppingCost = 200;
+      var drink05Cost = 500;
+      var drink1Cost = 1000;
+
+      var total = (product1 * product1Cost) + (topping * toppingCost) + (drink05 * drink05Cost) + (drink1 * drink1Cost);
+
+      document.getElementById("totalResult").innerHTML = "<h4>Összesen: " + total + " Ft</h4>";
+    }
+  </script>
+</body>
+</html>
